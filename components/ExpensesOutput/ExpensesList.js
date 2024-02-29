@@ -1,8 +1,9 @@
 import { FlatList,Text } from "react-native";
+import ExpenseItem from "./ExpenseItem";
 
 function renderExpenseItem({item}) {
     return (
-        <Text>{item.description}</Text>
+       <ExpenseItem description={item.description} amount={item.amount} date={item.date}/>
     )
 }
 function ExpensesList({expenses}) {

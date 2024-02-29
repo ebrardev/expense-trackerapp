@@ -8,7 +8,9 @@ function ExpenseItem({description,amount,date}) {
 
     function ExpensePressHandler() {
 
-        navigation.navigate("ManageExpense",)
+        navigation.navigate("ManageExpense",{
+            expenseId:id
+        })
 
     }
     return (

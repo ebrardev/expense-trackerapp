@@ -32,7 +32,7 @@ function ExpensesOverview() {
           size={24} 
           color="white" 
           onPress={() => {
-            navigation.navigate("ManageExpense")
+            navigation.navigate("ManageExpense",{editExpense: false})
           }}
         />
       )

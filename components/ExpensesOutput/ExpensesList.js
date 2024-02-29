@@ -3,7 +3,7 @@ import ExpenseItem from "./ExpenseItem";
 
 function renderExpenseItem({item}) {
     return (
-       <ExpenseItem description={item.description} amount={item.amount} date={item.date}/>
+       <ExpenseItem id={item.id} description={item.description} amount={item.amount} date={item.date}/>
     )
 }
 function ExpensesList({expenses}) {

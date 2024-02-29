@@ -22,13 +22,18 @@ function ManageExpense({ route, navigation }) {
     }, [navigation, isEditing])
   function deleteExpenseHandler() {
       //delete expense
+      navigation.goBack();
        
     }
 
     function cancelHandler() {
+        navigation.goBack();
+
     }
 
     function confirmHandler() {
+        //add or update expense
+        navigation.goBack();
     }
 
     return (

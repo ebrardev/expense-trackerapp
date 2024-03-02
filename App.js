@@ -12,8 +12,10 @@ import { FontAwesome } from '@expo/vector-icons';
 import IconButton from './components/UI/IconButton';
 import ExpensesContextProvider from './store/expenses-context';
 
+
 const Stack = createNativeStackNavigator();
 const BottomTabs = createBottomTabNavigator();
+
 
 function ExpensesOverview() {
   return(
@@ -68,7 +70,7 @@ export default function App() {
   <StatusBar style="auto" />
   <ExpensesContextProvider>
   <NavigationContainer>
-    <Stack.Navigator 
+    <Stack.Navigator  
     screenOptions={{
       headerStyle: {
         backgroundColor: GlobalStyles.colors.primary500,

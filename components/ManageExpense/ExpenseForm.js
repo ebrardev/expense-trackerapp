@@ -18,7 +18,10 @@ function ExpenseForm() {
             onChangeTxt: () => { }
             }} />
             <Input label="Description" textInputConfig={{ 
-                
+           multiline: true,
+      
+      
+
             }} />
  
             

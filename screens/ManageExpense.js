@@ -38,27 +38,22 @@ function ManageExpense({ route, navigation }) {
 
     }
 
-    function confirmHandler() {
+    function confirmHandler(expenseData) {
            if (isEditing) {
             //update expense
-            expensesCtx.updateExpense(editedExpenseId,{
-                description:"test21",
-                amount:100,
-                date:new Date("2023-10-10")
-            })
+            expensesCtx.updateExpense(editedExpenseId, expenseData)
+            
               } else {
-            expensesCtx.addExpense({
-                description:"test31",
-                amount:100,
-                date:new Date("2023-5-10")
-            })
+            expensesCtx.addExpense(expenseData)
         }
         navigation.goBack();
     }
 
     return (
         <View style={styles.container}>
-       <ExpenseForm submitButtonHandler={isEditing ? "update" : "add"} onCancel={cancelHandler} />
+       <ExpenseForm submitButtonHandler={isEditing ? "update" : "add"} 
+       onSubmit={confirmHandler}
+       onCancel={cancelHandler} />
            
            {isEditing &&  (
             <View style={styles.deleteContainer}>

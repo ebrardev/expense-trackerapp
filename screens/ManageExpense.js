@@ -14,6 +14,7 @@ function ManageExpense({ route, navigation }) {
 
     const editedExpenseId = route.params?.expenseId;
     const isEditing = !!editedExpenseId;
+    const selectedExpense = expensesCtx.expenses.find(expense => expense.id === editedExpenseId);
 
     console.log("editedExpenseId", editedExpenseId)
     console.log("isEditing", isEditing)
@@ -53,7 +54,10 @@ function ManageExpense({ route, navigation }) {
         <View style={styles.container}>
        <ExpenseForm submitButtonHandler={isEditing ? "update" : "add"} 
        onSubmit={confirmHandler}
-       onCancel={cancelHandler} />
+       onCancel={cancelHandler}
+       defaultValues={isEditing ? selectedExpense : null}
+       
+       />
            
            {isEditing &&  (
             <View style={styles.deleteContainer}>

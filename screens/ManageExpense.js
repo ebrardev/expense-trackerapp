@@ -40,14 +40,14 @@ function ManageExpense({ route, navigation }) {
 
     }
 
-    function confirmHandler(expenseData) {
+   async function confirmHandler(expenseData) {
            if (isEditing) {
             //update expense
-            expensesCtx.updateExpense(editedExpenseId, expenseData)
+             expensesCtx.updateExpense(editedExpenseId, expenseData)
             
               } else {
-                StoreExpense(expenseData)
-            expensesCtx.addExpense(expenseData)
+          const id =    await    StoreExpense(expenseData)
+            expensesCtx.addExpense({...expenseData,id:id})
         }
         navigation.goBack();
     }

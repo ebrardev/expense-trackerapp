@@ -12,7 +12,7 @@ export  async function FetchExpenses() {
    const expenses = []
 
 
-   con
+   
     for (const key in response.data) {
        const expenseObj = {
             id: key,

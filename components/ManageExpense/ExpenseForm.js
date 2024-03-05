@@ -8,15 +8,15 @@ import { getFormattedDate } from "../../util/Date";
 function ExpenseForm({onCancel,onSubmit,submitButtonHandler,defaultValues}) {
 
     const  [inputs,setInputs]=useState({
-        amount:{ value: defaultValues ? defaultValues.amount.toString() : "", isValid: !!defaultValues },
-        date:{ value: defaultValues ? getFormattedDate(defaultValues.date) : "", isValid: !!defaultValues },
-        description:{ value :defaultValues ? defaultValues.description : "",isValid: !!defaultValues },
+        amount:{ value: defaultValues ? defaultValues.amount.toString() : "", isValid: true },
+        date:{ value: defaultValues ? getFormattedDate(defaultValues.date) : "", isValid: true },
+        description:{ value :defaultValues ? defaultValues.description : "",isValid: true },
     });   
     function inputChangedHandler(inputIdentifier,enteredValue) {
         setInputs((curInputs) => {
             return {
                 ...curInputs,
-                [inputIdentifier]: {value: enteredValue, isValid: enteredValue , isValid: tru}
+                [inputIdentifier]: {value: enteredValue, isValid: enteredValue , isValid: true}
             }
         })
     }
@@ -53,7 +53,7 @@ function ExpenseForm({onCancel,onSubmit,submitButtonHandler,defaultValues}) {
         onSubmit(expenseData);
  
     }
-    const isFormValid = !inputs.amount.isValid || !inputs.date.isValid || !inputs.description.isValid;
+    const formIsInvalid = !inputs.amount.isValid || !inputs.date.isValid || !inputs.description.isValid;
 
     return (
         <View style={styles.form}>
@@ -62,6 +62,7 @@ function ExpenseForm({onCancel,onSubmit,submitButtonHandler,defaultValues}) {
             <Input 
     style={styles.rowInput}
     label="Amount" 
+    inValid = {!inputs.amount.isValid}
     textInputConfig={{ 
         keyboardType: "decimal-pad", 
         onChangeText: inputChangedHandler.bind(this, "amount"),
@@ -71,6 +72,7 @@ function ExpenseForm({onCancel,onSubmit,submitButtonHandler,defaultValues}) {
 <Input 
     style={styles.rowInput}
     label="Date" 
+    inValid = {!inputs.date.isValid}
     textInputConfig={{ 
         placeholder: "YYYY-MM-DD",
         maxLength: 10,
@@ -83,6 +85,7 @@ function ExpenseForm({onCancel,onSubmit,submitButtonHandler,defaultValues}) {
            
             <Input 
     label="Description" 
+    inValid = {!inputs.description.isValid}
     textInputConfig={{ 
         multiline: true,
         onChangeText: inputChangedHandler.bind(this, "description"),
@@ -133,5 +136,18 @@ const styles = StyleSheet.create({
     button :{
          minWidth:120,
          marginHorizontal:8,
+    },
+    errorText : {
+        color: GlobalStyles.colors.error500,
+        textAlign: "center",
+        marginTop: 10,
+        padding: 10,
+        fontSize: 16,
+    },
+    invalidLabel:{
+        color: GlobalStyles.colors.error500,
+    },
+    invalidInput:{
+        backgroundColor: GlobalStyles.colors.error50,
     },
 })

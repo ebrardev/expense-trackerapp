@@ -53,6 +53,7 @@ function ExpenseForm({onCancel,onSubmit,submitButtonHandler,defaultValues}) {
         onSubmit(expenseData);
  
     }
+    const isFormValid = !inputs.amount.isValid || !inputs.date.isValid || !inputs.description.isValid;
 
     return (
         <View style={styles.form}>
@@ -88,6 +89,8 @@ function ExpenseForm({onCancel,onSubmit,submitButtonHandler,defaultValues}) {
         value: inputs.description.value  
     }} 
 />
+
+   {formIsInvalid && <Text style={styles.errorText}>Please  check your entered data !   </Text> }
  
  <View style={styles.buttonContainer}>
                 <Button style={styles.button} mode="flat" onPress={onCancel}>Cancel</Button>
